@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voice+</string>
+    <string name="enable_voice_plus">Voice+ aktivieren</string>
+    <string name="info">Voice+ ermöglicht es allen Apps, SMS über Google Voice zu versenden</string>
+    <string name="disable">Deaktivieren</string>
+    <string name="account">Benutzerkonto</string>
+    <string name="not_granted">Fehlende Berechtigung:\n%s</string>
+</resources>
