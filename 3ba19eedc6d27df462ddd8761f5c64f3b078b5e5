@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acd31a7_d4f25c6f",
+        "filename": "res/values-hu/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1573
+      },
+      "writtenOn": "2013-07-23T22:41:39Z",
+      "side": 1,
+      "message": "engedelyezve, bekapcsolva",
+      "revId": "3ba19eedc6d27df462ddd8761f5c64f3b078b5e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3acd31a7_b4e7e0ab",
+        "filename": "res/values-hu/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1573
+      },
+      "writtenOn": "2013-07-23T22:41:39Z",
+      "side": 1,
+      "message": "nekem hianyzik a nevelo az elejerol....\nilletve: ha alkalmazasok, akkor kuldjenek, tobbes szam",
+      "revId": "3ba19eedc6d27df462ddd8761f5c64f3b078b5e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3acd31a7_94ece490",
+        "filename": "res/values-hu/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1573
+      },
+      "writtenOn": "2013-07-23T22:41:39Z",
+      "side": 1,
+      "message": "Letiltas (Letiltva \u003d disableD)",
+      "revId": "3ba19eedc6d27df462ddd8761f5c64f3b078b5e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3acd31a7_74026840",
+        "filename": "res/values-hu/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1573
+      },
+      "writtenOn": "2013-07-23T22:41:39Z",
+      "side": 1,
+      "message": "Hianyzo",
+      "revId": "3ba19eedc6d27df462ddd8761f5c64f3b078b5e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
