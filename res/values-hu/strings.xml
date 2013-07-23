@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voice+</string>
+    <string name="enable_voice_plus">Voice+ aktíválása</string>
+    <string name="info">Voice+ lehetővé teszi az alkalmazások számára, hogy SMS üzenetet küldjenek a Google Voice-on keresztül</string>
+    <string name="disable">Letiltása</string>
+    <string name="account">Fiók</string>
+    <string name="not_granted">Hiányzó engedély:\n%s</string>
+</resources>
