@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="enable_voice_plus">啟動由 Cyanogenmod 提供的Voice+</string>
+    <string name="info">Voice+ 容許所有應用經 Google Voice 傳送 SMS 訊息</string>
+    <string name="disable">關閉</string>
+    <string name="account">帳戶</string>
+
+    <string name="not_granted">無法取得權限:\n%s</string>
+</resources>
