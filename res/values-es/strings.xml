@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voice+</string>
+    <string name="enable_voice_plus">Activar Voice+ de CyanogenMod</string>
+    <string name="info">Voice+ permite a las aplicaciones enviar mensajes SMS mediante Google Voice</string>
+    <string name="disable">Deshabilitada</string>
+    <string name="account">Cuenta</string>
+    <string name="not_granted">Permiso %s no disponible</string>
+</resources>
