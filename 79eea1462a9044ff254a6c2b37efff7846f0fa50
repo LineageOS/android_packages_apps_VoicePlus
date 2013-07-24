@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3acd31a7_ddd71f22",
+        "filename": "res/values-es/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4733
+      },
+      "writtenOn": "2013-07-24T23:44:39Z",
+      "side": 1,
+      "message": "I think \"mensajes SMS\" is a bit redundant if they stay together.\nWhat about:\n\"Voice+ permite a aplicaciones externas enviar SMS mediante Google Voice\"",
+      "parentUuid": "3acd31a7_1dbb5710",
+      "revId": "79eea1462a9044ff254a6c2b37efff7846f0fa50",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3acd31a7_bd40e308",
         "filename": "res/values-es/strings.xml",
         "patchSetId": 2
