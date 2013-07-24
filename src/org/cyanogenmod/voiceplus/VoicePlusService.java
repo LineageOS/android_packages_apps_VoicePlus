@@ -24,6 +24,7 @@ import android.os.IBinder;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -114,6 +115,8 @@ public class VoicePlusService extends AccessibilityService {
     // new messages from google voice get mocked out as real SMS events in Android.
     private void registerSmsMiddleware() {
         try {
+            if (smsTransport != null)
+                return;
             Class sm = Class.forName("android.os.ServiceManager");
             Method getService = sm.getMethod("getService", String.class);
             smsTransport = ISms.Stub.asInterface((IBinder)getService.invoke(null, "isms"));
@@ -465,6 +468,10 @@ public class VoicePlusService extends AccessibilityService {
                 return -1;
             }
         });
+
+        registerSmsMiddleware();
+        if (smsTransport == null)
+            throw new Exception("SMS transport unavailable");
 
         long timestamp = settings.getLong("timestamp", 0);
         boolean first = timestamp == 0;
