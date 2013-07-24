@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acd31a7_fd81bb4e",
+        "filename": "res/values-es/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2013-07-24T21:03:17Z",
+      "side": 1,
+      "message": "IHMO, \"Voice+ habilita el envio de mensajes SMS mediante Google Voice a todas las aplicaciones\". Up to you",
+      "revId": "71c35a691182e54d3c67721b861b7ae68cf42fc1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3acd31a7_9d808748",
+        "filename": "res/values-es/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2013-07-24T21:03:17Z",
+      "side": 1,
+      "message": "Uhm, i think we should quote the permission (originally the phrase is separated of the permission by a colon). Up to you",
+      "revId": "71c35a691182e54d3c67721b861b7ae68cf42fc1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
