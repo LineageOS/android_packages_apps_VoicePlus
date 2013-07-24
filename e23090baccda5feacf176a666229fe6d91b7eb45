@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acd31a7_da8cc537",
+        "filename": "res/values-hu/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5393
+      },
+      "writtenOn": "2013-07-24T08:33:06Z",
+      "side": 1,
+      "message": "aktivalasa rovid i-vel",
+      "revId": "e23090baccda5feacf176a666229fe6d91b7eb45",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3acd31a7_ba8109fe",
+        "filename": "res/values-hu/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5393
+      },
+      "writtenOn": "2013-07-24T08:33:06Z",
+      "side": 1,
+      "message": "A Voice+ lehetove teszi...",
+      "revId": "e23090baccda5feacf176a666229fe6d91b7eb45",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
