@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acd31a7_1dbb5710",
+        "filename": "res/values-es/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 2134
+      },
+      "writtenOn": "2013-07-24T21:32:28Z",
+      "side": 1,
+      "message": "Two ways to say same thing. I prefer this way. We need another opinion ;)",
+      "revId": "79eea1462a9044ff254a6c2b37efff7846f0fa50",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3acd31a7_bd40e308",
+        "filename": "res/values-es/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 2134
+      },
+      "writtenOn": "2013-07-24T21:32:28Z",
+      "side": 1,
+      "message": "Spanish form doesn\u0027t looks fine with a colon. \"Permiso no disponible: tal-y-tal\". I prefer \"Permiso \u0027tal-y-tal\u0027 no disponible\", and yes, with quotes.",
+      "revId": "79eea1462a9044ff254a6c2b37efff7846f0fa50",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
