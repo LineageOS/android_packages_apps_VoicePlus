@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voice+</string>
+    <string name="enable_voice_plus">Aktiver Voice+ av Cyanogenmod</string>
+    <string name="info">Voice+ lar alle apper sende SMS meldinger gjennom Google Voice</string>
+    <string name="disable">Deaktiver</string>
+    <string name="account">Konto</string>
+    <string name="not_granted">Tillatelse ikke tilgjengelig:\n%s</string>
+</resources>
