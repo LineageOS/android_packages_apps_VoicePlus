@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acd31a7_48558fc4",
+        "filename": "res/values-pt-rBR/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5466
+      },
+      "writtenOn": "2013-07-25T10:38:16Z",
+      "side": 1,
+      "message": "a todos ....  usando o ...",
+      "revId": "24d2ed015b3a5a8356cc834a768c9ee0406c0e21",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
