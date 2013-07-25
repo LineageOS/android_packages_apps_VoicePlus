@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3acd31a7_ddf27f6f",
+        "filename": "res/values-es/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 2134
+      },
+      "writtenOn": "2013-07-25T04:17:01Z",
+      "side": 1,
+      "message": "Perhaps, but all strings about this, SMS goes with message word. You can see it in frameworks_base, or in default strings in this package.\n\nWikipedia is writing about this as \"mensajes SMS\": http://es.wikipedia.org/wiki/Servicio_de_mensajes_cortos",
+      "parentUuid": "3acd31a7_ddd71f22",
+      "revId": "79eea1462a9044ff254a6c2b37efff7846f0fa50",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3acd31a7_bd40e308",
         "filename": "res/values-es/strings.xml",
         "patchSetId": 2
