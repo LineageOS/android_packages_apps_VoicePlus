@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voice+</string>
+    <string name="enable_voice_plus">Voice+ van Cyanogenmod activeren</string>
+    <string name="info">Voice+ maakt het voor alle apps mogelijk om SMS-berichten te sturen via Google Voice</string>
+    <string name="disable">Uitschakelen</string>
+    <string name="account">Account</string>
+    <string name="not_granted">Machtiging niet beschikbaar:\n%s</string>
+</resources>
