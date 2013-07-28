@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acd31a7_4edb571c",
+        "filename": "res/values-nb/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 982
+      },
+      "writtenOn": "2013-07-28T01:52:59Z",
+      "side": 1,
+      "message": "SMS-meldinger",
+      "revId": "cfa28376842aedc0a6c9a48820a8032e0989f0c3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
