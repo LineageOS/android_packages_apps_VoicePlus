@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aca2d91_f3cfb0b1",
+        "filename": "res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-07-28T23:36:11Z",
+      "side": 1,
+      "message": "- CyanogenMod (Engels veranderen?)\n- activeren \u003e\u003e inschakelen",
+      "revId": "989335d671eb38b52dc5e0e4d596ee2ca8b551c8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
