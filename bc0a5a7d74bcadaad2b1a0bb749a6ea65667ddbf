@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aca2d91_d60942df",
+        "filename": "res/values-it/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-07-29T09:16:19Z",
+      "side": 1,
+      "message": "Cyanogenmod -\u003e CyanogenMod",
+      "revId": "bc0a5a7d74bcadaad2b1a0bb749a6ea65667ddbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
