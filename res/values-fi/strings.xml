@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voice+</string>
+    <string name="enable_voice_plus">Aktivoi Voice+</string>
+    <string name="info">Voice+ ottaa kaikissa sovelluksissa käyttöön SMS-viestien lähetyksen Google Voicen kautta</string>
+    <string name="disable">Poista käytöstä</string>
+    <string name="account">Käyttäjätili</string>
+    <string name="not_granted">Käyttöoikeutta ei saatavilla:\n%s</string>
+</resources>
