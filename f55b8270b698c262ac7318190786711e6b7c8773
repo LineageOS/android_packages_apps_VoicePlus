@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae975fb_d4cb721d",
+        "filename": "res/values-ru/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-08-10T05:38:56Z",
+      "side": 1,
+      "message": "Nuzhna zapyataya posle slova \"soobsheniya\" i defis pered nim (SMS-soobsheniya)",
+      "revId": "f55b8270b698c262ac7318190786711e6b7c8773",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
