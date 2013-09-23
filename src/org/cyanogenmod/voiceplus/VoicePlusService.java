@@ -150,6 +150,8 @@ public class VoicePlusService extends Service {
     public int onStartCommand(final Intent intent, int flags, int startId) {
         int ret = super.onStartCommand(intent, flags, startId);
 
+	
+
         if (null == settings.getString("account", null)) {
             stopSelf();
             return ret;
@@ -159,6 +161,13 @@ public class VoicePlusService extends Service {
 
         if (intent == null)
             return ret;
+	
+	String destAddr = intent.getStringExtra("destAddr");
+        String scAddr = intent.getStringExtra("scAddr");
+	if (!scAddr.startsWith("+1") && !destAddr.startsWith("+1")) {
+		stopSelf();
+		return ret;
+	}
 
         // handle an outgoing sms on a background thread.
         if ("android.intent.action.NEW_OUTGOING_SMS".equals(intent.getAction())) {
