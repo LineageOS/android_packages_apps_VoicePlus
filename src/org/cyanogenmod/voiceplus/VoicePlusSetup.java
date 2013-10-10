@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2013 CyanogenMod Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.cyanogenmod.voiceplus;
 
 import android.Manifest;
@@ -61,15 +77,19 @@ public class VoicePlusSetup extends Activity {
             "android.permission.CANCEL_NOTIFICATIONS",
             "android.permission.INTERCEPT_SMS",
         };
+
         boolean ok = true;
+
         for (String permission: permissions) {
             if (checkCallingOrSelfPermission(permission) == PackageManager.PERMISSION_DENIED) {
                 status.setText(getString(R.string.not_granted, permission));
                 ok = false;
             }
         }
-        if (ok)
+
+        if (ok) {
             statusContainer.setVisibility(View.GONE);
+        }
 
         lv = (ListView) findViewById(R.id.list);
         lv.setAdapter(accountAdapter = new AccountAdapter());
@@ -103,9 +123,12 @@ public class VoicePlusSetup extends Activity {
         NULL = new Account(getString(R.string.disable), "com.google");
         accountAdapter.add(NULL);
         int selected = 0;
+
         for (Account account : AccountManager.get(this).getAccountsByType("com.google")) {
-            if (account.name.equals(selectedAccount))
+            if (account.name.equals(selectedAccount)) {
                 selected = accountAdapter.getCount();
+            }
+
             accountAdapter.add(account);
         }
 
@@ -116,17 +139,19 @@ public class VoicePlusSetup extends Activity {
     }
 
     void invalidateToken(String account) {
-        if (account == null)
+        if (account == null) {
             return;
+        }
 
         try {
-            // grab the auth token
-            Bundle bundle = AccountManager.get(this).getAuthToken(new Account(account, "com.google"), "grandcentral", true, null, null).getResult();
+            // Grab the auth token
+            Bundle bundle = AccountManager.get(this).getAuthToken(new Account(
+                    account, "com.google"), "grandcentral", true, null, null).getResult();
+
             String authToken = bundle.getString(AccountManager.KEY_AUTHTOKEN);
             AccountManager.get(this).invalidateAuthToken("com.google", authToken);
             Log.i(LOGTAG, "Token invalidated.");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.e(LOGTAG, "error invalidating token", e);
         }
     }
@@ -135,17 +160,19 @@ public class VoicePlusSetup extends Activity {
 
     void getToken(final Account account, final int position) {
         AccountManager am = AccountManager.get(this);
-        if (am == null)
+        if (am == null) {
             return;
+        }
+
         am.getAuthToken(account, "grandcentral", null, this, new AccountManagerCallback<Bundle>() {
             @Override
             public void run(AccountManagerFuture<Bundle> future) {
                 try {
                     Bundle bundle = future.getResult();
                     final String authToken = bundle.getString(AccountManager.KEY_AUTHTOKEN);
-                    settings.edit()
-                    .putString("account", account.name)
-                    .commit();
+
+                    settings.edit().putString("account", account.name).commit();
+
                     Intent intent = new Intent(VoicePlusSetup.this, VoicePlusService.class);
                     intent.setAction(VoicePlusService.ACCOUNT_CHANGED);
                     startService(intent);
@@ -153,8 +180,7 @@ public class VoicePlusSetup extends Activity {
                     lv.setItemChecked(position, true);
                     lv.requestLayout();
                     Log.i(LOGTAG, "Token retrieved.");
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
