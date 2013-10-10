@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2013 CyanogenMod Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.cyanogenmod.voiceplus;
 
 import android.accounts.Account;
@@ -45,11 +61,9 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by koush on 7/5/13.
- */
 public class VoicePlusService extends Service {
-    public static final String ACTION_INCOMING_VOICE = VoicePlusService.class.getPackage().getName() + ".INCOMING_VOICE";
+    public static final String ACTION_INCOMING_VOICE =
+            VoicePlusService.class.getPackage().getName() + ".INCOMING_VOICE";
     private static final String LOGTAG = "VoicePlusSetup";
 
     private ISms smsTransport;
@@ -60,10 +74,10 @@ public class VoicePlusService extends Service {
         return null;
     }
 
-    // ensure that this notification listener is enabled.
-    // the service watches for google voice notifications to know when to check for new
-    // messages.
-    final String ENABLED_NOTIFICATION_LISTENERS = "enabled_notification_listeners"; //Settings.Secure.ENABLED_NOTIFICATION_LISTENERS
+    // Ensure that this notification listener is enabled
+    // The service watches for google voice notifications to
+    // know when to check for new messages
+    final String ENABLED_NOTIFICATION_LISTENERS = "enabled_notification_listeners";
     private void ensureEnabled() {
         ComponentName me = new ComponentName(this, VoiceListenerService.class);
         String meFlattened = me.flattenToString();
@@ -86,17 +100,17 @@ public class VoicePlusService extends Service {
         existingListeners);
     }
 
-    // hook into sms manager to be able to synthesize SMS events.
-    // new messages from google voice get mocked out as real SMS events in Android.
+    // Hook into sms manager to be able to synthesize SMS events
+    // New messages from Google Voice get mocked out as real SMS events in Android
     private void registerSmsMiddleware() {
         try {
-            if (smsTransport != null)
+            if (smsTransport != null) {
                 return;
+            }
             Class sm = Class.forName("android.os.ServiceManager");
             Method getService = sm.getMethod("getService", String.class);
             smsTransport = ISms.Stub.asInterface((IBinder)getService.invoke(null, "isms"));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.e(LOGTAG, "register error", e);
         }
     }
@@ -104,13 +118,18 @@ public class VoicePlusService extends Service {
     BroadcastReceiver mConnectivityReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            // refresh inbox if connectivity returns
-            if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false))
+            // Refresh inbox if connectivity returns
+            if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false)) {
                 return;
-            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            }
+
+            ConnectivityManager connectivityManager =
+                    (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-            if (activeNetworkInfo != null)
+
+            if (activeNetworkInfo != null) {
                 startRefresh();
+            }
         }
     };
 
@@ -134,34 +153,43 @@ public class VoicePlusService extends Service {
         startRefresh();
     }
 
-    // parse out the intent extras from android.intent.action.NEW_OUTGOING_SMS
-    // and send it off via google voice
+    // Parse out the intent extras from android.intent.action.NEW_OUTGOING_SMS
+    // and send it off via Google Voice
     void handleOutgoingSms(Intent intent) {
         boolean multipart = intent.getBooleanExtra("multipart", false);
         String destAddr = intent.getStringExtra("destAddr");
         String scAddr = intent.getStringExtra("scAddr");
         ArrayList<String> parts = intent.getStringArrayListExtra("parts");
-        ArrayList<PendingIntent> sentIntents = intent.getParcelableArrayListExtra("sentIntents");
-        ArrayList<PendingIntent> deliveryIntents = intent.getParcelableArrayListExtra("deliveryIntents");
+        ArrayList<PendingIntent> sentIntents =
+                intent.getParcelableArrayListExtra("sentIntents");
+        ArrayList<PendingIntent> deliveryIntents =
+                intent.getParcelableArrayListExtra("deliveryIntents");
 
-        onSendMultipartText(destAddr, scAddr, parts, sentIntents, deliveryIntents, multipart);
+        onSendMultipartText(destAddr, scAddr, parts, sentIntents,
+                deliveryIntents, multipart);
     }
 
     boolean canDeliverToAddress(String address) {
-        if (address == null)
+        if (address == null) {
             return false;
-        if (address.startsWith("+") && !address.startsWith("+1"))
+        }
+        if (address.startsWith("+") && !address.startsWith("+1")) {
             return false;
+        }
 
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         String country = tm.getNetworkCountryIso();
-        if (country == null)
-            country = tm.getSimCountryIso();
-        if (country == null)
-            return address.startsWith("+1"); /* Should never be reached. */
 
-        if (!country.toUpperCase().equals("US") && !address.startsWith("+1"))
+        if (country == null) {
+            country = tm.getSimCountryIso();
+        }
+        if (country == null) {
+            return address.startsWith("+1"); // Should never be reached
+        }
+
+        if (!country.toUpperCase().equals("US") && !address.startsWith("+1")) {
             return false;
+        }
 
         return true;
     }
@@ -177,10 +205,11 @@ public class VoicePlusService extends Service {
 
         ensureEnabled();
 
-        if (intent == null)
+        if (intent == null) {
             return ret;
+        }
 
-        // handle an outgoing sms on a background thread.
+        // Handle an outgoing sms on a background thread
         if ("android.intent.action.NEW_OUTGOING_SMS".equals(intent.getAction())) {
             String destination = intent.getStringExtra("destAddr");
             if (!canDeliverToAddress(destination)) {
@@ -197,20 +226,20 @@ public class VoicePlusService extends Service {
                     handleOutgoingSms(intent);
                 }
             }.start();
-        }
-        else if (ACTION_INCOMING_VOICE.equals(intent.getAction())) {
-            if (null == settings.getString("account", null))
+        } else if (ACTION_INCOMING_VOICE.equals(intent.getAction())) {
+            if (null == settings.getString("account", null)) {
                 return ret;
+            }
+
             startRefresh();
-        }
-        else if (ACCOUNT_CHANGED.equals(intent.getAction())) {
+        } else if (ACCOUNT_CHANGED.equals(intent.getAction())) {
             new Thread() {
                 @Override
                 public void run() {
                     try {
                         fetchRnrSe(getAuthToken(settings.getString("account", null)));
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
+                        // Do nothing here
                     }
                 }
             }.start();
@@ -219,39 +248,48 @@ public class VoicePlusService extends Service {
         return ret;
     }
 
-    public static final String ACCOUNT_CHANGED = VoicePlusService.class.getPackage().getName() + ".ACCOUNT_CHANGED";
+    public static final String ACCOUNT_CHANGED =
+            VoicePlusService.class.getPackage().getName() + ".ACCOUNT_CHANGED";
 
-    // mark all sent intents as failures
+    // Mark all sent intents as failures
     public void fail(List<PendingIntent> sentIntents) {
-        if (sentIntents == null)
+        if (sentIntents == null) {
             return;
+        }
+
         for (PendingIntent si: sentIntents) {
-            if (si == null)
+            if (si == null) {
                 continue;
+            }
+
             try {
                 si.send();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
+                // Do nothing here
             }
         }
     }
 
-    // mark all sent intents as successfully sent
+    // Mark all sent intents as successfully sent
     public void success(List<PendingIntent> sentIntents) {
-        if (sentIntents == null)
+        if (sentIntents == null) {
             return;
+        }
+
         for (PendingIntent si: sentIntents) {
-            if (si == null)
+            if (si == null) {
                 continue;
+            }
+
             try {
                 si.send(Activity.RESULT_OK);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
+                // Do nothing here
             }
         }
     }
 
-    // fetch the weirdo opaque token google voice needs...
+    // Fetch the weird opaque token Google Voice needs
     void fetchRnrSe(String authToken) throws ExecutionException, InterruptedException {
         JsonObject userInfo = Ion.with(this)
         .load("https://www.google.com/voice/request/user")
@@ -264,14 +302,19 @@ public class VoicePlusService extends Service {
         try {
             TelephonyManager tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
             String number = tm.getLine1Number();
+
             if (number != null) {
                 JsonObject phones = userInfo.getAsJsonObject("phones");
                 for (Map.Entry<String, JsonElement> entry: phones.entrySet()) {
                     JsonObject phone = entry.getValue().getAsJsonObject();
-                    if (!PhoneNumberUtils.compare(number, phone.get("phoneNumber").getAsString()))
+
+                    if (!PhoneNumberUtils.compare(number, phone.get("phoneNumber").getAsString())) {
                         continue;
-                    if (!phone.get("smsEnabled").getAsBoolean())
+                    }
+                    if (!phone.get("smsEnabled").getAsBoolean()) {
                         break;
+                    }
+
                     Log.i(LOGTAG, "Disabling SMS forwarding to phone.");
                     Ion.with(this)
                     .load("https://www.google.com/voice/settings/editForwardingSms/")
@@ -283,53 +326,56 @@ public class VoicePlusService extends Service {
                     break;
                 }
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.e(LOGTAG, "Error verifying GV SMS forwarding", e);
         }
 
-        settings.edit()
-        .putString("_rnr_se", rnrse)
-        .commit();
+        settings.edit().putString("_rnr_se", rnrse).commit();
     }
 
-    // mark an outgoing text as recently sent, so if it comes in via
-    // round trip, we ignore it.
+    // Mark an outgoing text as recently sent,
+    // so if it comes in via round trip, we ignore it
     PriorityQueue<String> recentSent = new PriorityQueue<String>();
     private void addRecent(String text) {
-        while (recentSent.size() > 20)
+        while (recentSent.size() > 20) {
             recentSent.remove();
+        }
+
         recentSent.add(text);
     }
 
-    public String getAuthToken(String account) throws IOException, OperationCanceledException, AuthenticatorException {
-        Bundle bundle = AccountManager.get(this).getAuthToken(new Account(account, "com.google"), "grandcentral", true, null, null).getResult();
+    public String getAuthToken(String account) throws IOException,
+            OperationCanceledException, AuthenticatorException {
+        Bundle bundle = AccountManager.get(this).getAuthToken(new Account(account, "com.google"),
+                "grandcentral", true, null, null).getResult();
+
         return bundle.getString(AccountManager.KEY_AUTHTOKEN);
     }
 
-    // send an outgoing sms event via google voice
-    public void onSendMultipartText(String destAddr, String scAddr, List<String> texts, final List<PendingIntent> sentIntents, final List<PendingIntent> deliveryIntents, boolean multipart) {
-        // grab the account and wacko opaque routing token thing
+    // Send an outgoing sms event via Google Voice
+    public void onSendMultipartText(String destAddr, String scAddr,
+                List<String> texts, final List<PendingIntent> sentIntents,
+                final List<PendingIntent> deliveryIntents, boolean multipart) {
+        // Grab the account and wacko opaque routing token thing
         String rnrse = settings.getString("_rnr_se", null);
         String account = settings.getString("account", null);
         String authToken;
 
         try {
-            // grab the auth token
+            // Grab the auth token
             authToken = getAuthToken(account);
 
             if (rnrse == null) {
                 fetchRnrSe(authToken);
                 rnrse = settings.getString("_rnr_se", null);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.e(LOGTAG, "Error fetching tokens", e);
             fail(sentIntents);
             return;
         }
 
-        // combine the multipart text into one string
+        // Combine the multipart text into one string
         StringBuilder textBuilder = new StringBuilder();
         for (String text: texts) {
             textBuilder.append(text);
@@ -337,40 +383,40 @@ public class VoicePlusService extends Service {
         String text = textBuilder.toString();
 
         try {
-            // send it off, and note that we recently sent this message
-            // for round trip tracking
+            // Send it off, and note that we recently
+            // sent this message for round trip tracking
             sendRnrSe(authToken, rnrse, destAddr, text);
             addRecent(text);
             success(sentIntents);
             return;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.d(LOGTAG, "send error", e);
         }
 
         try {
-            // on failure, fetch info and try again
+            // On failure, fetch info and try again
             fetchRnrSe(authToken);
             rnrse = settings.getString("_rnr_se", null);
             sendRnrSe(authToken, rnrse, destAddr, text);
             addRecent(text);
             success(sentIntents);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.d(LOGTAG, "send failure", e);
             fail(sentIntents);
         }
     }
 
-    // hit the google voice api to send a text
-    void sendRnrSe(final String authToken, String rnrse, String number, String text) throws Exception {
+    // Hit the google voice api to send a text
+    void sendRnrSe(final String authToken,
+            String rnrse, String number,String text) throws Exception {
         JsonObject json = Ion.with(this)
         .load("https://www.google.com/voice/sms/send/")
         .onHeaders(new HeadersCallback() {
             @Override
             public void onHeaders(RawHeaders headers) {
                 if (headers.getResponseCode() == 401) {
-                    AccountManager.get(VoicePlusService.this).invalidateAuthToken("com.google", authToken);
+                    AccountManager.get(VoicePlusService.this)
+                            .invalidateAuthToken("com.google", authToken);
                     settings.edit().remove("_rnr_se").commit();
                 }
             }
@@ -383,8 +429,9 @@ public class VoicePlusService extends Service {
         .asJsonObject()
         .get();
 
-        if (!json.get("ok").getAsBoolean())
+        if (!json.get("ok").getAsBoolean()) {
             throw new Exception(json.toString());
+        }
     }
 
     public static class Payload {
@@ -422,26 +469,27 @@ public class VoicePlusService extends Service {
     private static final Uri URI_SENT = Uri.parse("content://sms/sent");
     private static final Uri URI_RECEIVED = Uri.parse("content://sms/inbox");
 
-    // insert a message into the sms/mms provider.
-    // we do this in the case of outgoing messages
-    // that were not sent via this phone, and also on initial
-    // message sync.
+    // Insert a message into the sms/mms provider
+    // We do this in the case of outgoing messages that were
+    // not sent via this phone, and also on initial message sync
     synchronized void insertMessage(String number, String text, int type, long date) {
         Uri uri;
-        if (type == PROVIDER_INCOMING_SMS)
+        if (type == PROVIDER_INCOMING_SMS) {
             uri = URI_RECEIVED;
-        else
+        } else {
             uri = URI_SENT;
+        }
 
         Cursor c = getContentResolver().query(uri, null, "date = ?",
-                    new String[] { String.valueOf(date) }, null);
+                new String[] { String.valueOf(date) }, null);
         try {
-            if (c.moveToNext())
+            if (c.moveToNext()) {
                 return;
-        }
-        finally {
+            }
+        } finally {
             c.close();
         }
+
         ContentValues values = new ContentValues();
         values.put("address", number);
         values.put("body", text);
@@ -474,15 +522,16 @@ public class VoicePlusService extends Service {
         }
     }
 
-    // refresh the messages that were on the server
+    // Refresh the messages that were on the server
     void refreshMessages() throws Exception {
         String account = settings.getString("account", null);
-        if (account == null)
+        if (account == null) {
             return;
+        }
 
         Log.i(LOGTAG, "Refreshing messages");
 
-        // tokens!
+        // Tokens
         final String authToken = getAuthToken(account);
 
         Payload payload = Ion.with(this)
@@ -492,7 +541,8 @@ public class VoicePlusService extends Service {
             public void onHeaders(RawHeaders headers) {
                 if (headers.getResponseCode() == 401) {
                     Log.e(LOGTAG, "Refresh failed:\n" + headers.toHeaderString());
-                    AccountManager.get(VoicePlusService.this).invalidateAuthToken("com.google", authToken);
+                    AccountManager.get(VoicePlusService.this)
+                            .invalidateAuthToken("com.google", authToken);
                     settings.edit().remove("_rnr_se").commit();
                 }
             }
@@ -503,49 +553,60 @@ public class VoicePlusService extends Service {
 
         ArrayList<Message> all = new ArrayList<Message>();
         for (Conversation conversation: payload.conversations) {
-            for (Message message: conversation.messages)
+            for (Message message: conversation.messages) {
                 all.add(message);
+            }
         }
 
-        // sort by date order so the events get added in the same order
+        // Sort by date order so the events get added in the same order
         Collections.sort(all, new Comparator<Message>() {
             @Override
             public int compare(Message lhs, Message rhs) {
-                if (lhs.date == rhs.date)
+                if (lhs.date == rhs.date) {
                     return 0;
-                if (lhs.date > rhs.date)
+                }
+                if (lhs.date > rhs.date) {
                     return 1;
+                }
+
                 return -1;
             }
         });
 
         registerSmsMiddleware();
-        if (smsTransport == null)
+        if (smsTransport == null) {
             throw new Exception("SMS transport unavailable");
+        }
 
         long timestamp = settings.getLong("timestamp", 0);
         boolean first = timestamp == 0;
         long max = timestamp;
         for (Message message: all) {
             max = Math.max(max, message.date);
-            if (message.phoneNumber == null)
-                continue;
-            if (message.date <= timestamp)
-                continue;
-            if (message.message == null)
-                continue;
 
-            // on first sync, just populate the mms provider...
-            // don't send any broadcasts.
+            if (message.phoneNumber == null) {
+                continue;
+            }
+            if (message.date <= timestamp) {
+                continue;
+            }
+            if (message.message == null) {
+                continue;
+            }
+
+            // On first sync, just populate the MMS provider
+            // Son't send any broadcasts
             if (first) {
                 int type;
-                if (message.type == VOICE_INCOMING_SMS)
+                if (message.type == VOICE_INCOMING_SMS) {
                     type = PROVIDER_INCOMING_SMS;
-                else if (message.type == VOICE_OUTGOING_SMS)
+                } else if (message.type == VOICE_OUTGOING_SMS) {
                     type = PROVIDER_OUTGOING_SMS;
-                else
+                } else {
                     continue;
-                // just populate the content provider and go
+                }
+
+                // Just populate the content provider and go
                 insertMessage(message.phoneNumber, message.message, type, message.date);
                 continue;
             }
@@ -560,18 +621,23 @@ public class VoicePlusService extends Service {
                         break;
                     }
                 }
-                if (!found)
-                    insertMessage(message.phoneNumber, message.message, PROVIDER_OUTGOING_SMS, message.date);
+
+                if (!found) {
+                    insertMessage(message.phoneNumber,
+                            message.message, PROVIDER_OUTGOING_SMS, message.date);
+                }
+
                 continue;
             }
 
-            if (message.type != VOICE_INCOMING_SMS)
+            if (message.type != VOICE_INCOMING_SMS) {
                 continue;
+            }
+
             synthesizeMessage(message.phoneNumber, message.message, message.date);
         }
-        settings.edit()
-        .putLong("timestamp", max)
-        .commit();
+
+        settings.edit().putLong("timestamp", max).commit();
     }
 
     void startRefresh() {
@@ -580,8 +646,7 @@ public class VoicePlusService extends Service {
             public void run() {
                 try {
                     refreshMessages();
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Log.e(LOGTAG, "Error refreshing messages", e);
                 }
             }
