@@ -14,10 +14,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Voice+</string>
-    <string name="enable_voice_plus">Activa Voice+ de CyanogenMod</string>
-    <string name="info">Voice+ permet a totes les apps enviar misstages SMS a través de Google Voice</string>
-    <string name="disable">Desactiva</string>
-    <string name="account">Compte</string>
-    <string name="not_granted">Permís no disponible:\n%s</string>
+  <string name="app_name">Voice+</string>
+  <string name="enable_voice_plus">Activa Voice+ de CyanogenMod</string>
+  <string name="info">Voice+ permet a totes les apps enviar misstages SMS a través de Google Voice</string>
+  <string name="disable">Desactivat</string>
+  <string name="account">Compte</string>
+  <string name="not_granted">Permís no disponible:\n%s</string>
 </resources>
