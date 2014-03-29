@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources>
-  <string name="enable_voice_plus">Activa Voice+ de CyanogenMod</string>
-  <string name="info">Voice+ permet a totes les apps enviar misstages SMS a través de Google Voice</string>
-  <string name="disable">Desactiva</string>
-  <string name="account">Compte</string>
-  <string name="not_granted">Permís no disponible:\n%s</string>
+  <string name="enable_voice_plus">CyanogenMod Voice+\'ı aktif et</string>
+  <string name="info">Voice+ her uygulamanın Google Voice üzerinden SMS mesajları göndermesini sağlar</string>
+  <string name="disable">Devre dışı</string>
+  <string name="account">Hesap</string>
+  <string name="not_granted">İzin yok:\n%s</string>
 </resources>
