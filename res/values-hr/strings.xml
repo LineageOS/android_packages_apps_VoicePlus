@@ -16,10 +16,10 @@
      limitations under the License.
 -->
 <resources>
-  <string name="enable_voice_plus">Ativar Voice+ da CyanogenMod</string>
-  <string name="info">Voice+ permite que todas as aplicações enviem mensagens SMS através do Google Voice</string>
-  <string name="select_account">Selecionar conta</string>
-  <string name="disable">Desativar</string>
-  <string name="account">Conta</string>
-  <string name="not_granted">Permissão indisponível:\n%s</string>
+  <string name="enable_voice_plus">Aktiviraj Voice+ CyanogenMod-a</string>
+  <string name="info">Voice+ omogućuje svim aplikacijama slanje SMS poruka preko Google Voice</string>
+  <string name="select_account">Odaberi račun</string>
+  <string name="disable">Onemogućite</string>
+  <string name="account">Račun</string>
+  <string name="not_granted">Dozvola nedostupna:\n%s</string>
 </resources>
