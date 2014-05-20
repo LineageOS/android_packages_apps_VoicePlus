@@ -15,7 +15,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="enable_voice_plus">Attiva Voice+ by CyanogenMod</string>
   <string name="info">Voice+ permette a tutte le applicazioni di inviare messaggi SMS tramite Google Voice</string>
   <string name="select_account">Seleziona account</string>

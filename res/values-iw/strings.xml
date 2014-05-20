@@ -15,7 +15,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="enable_voice_plus">הפעל Voice+ על ידי CyanogenMod</string>
   <string name="info">Voice+ מאפשר לכל היישומים לשלוח הודעות SMS דרך Google Voice</string>
   <string name="select_account">בחר חשבון</string>

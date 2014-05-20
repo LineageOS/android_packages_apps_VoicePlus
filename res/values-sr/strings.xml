@@ -15,7 +15,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="enable_voice_plus">Активирај Voice+ од CyanogenModа</string>
   <string name="info">Voice+ омогућава свим апликацијама слање SMS порука преко Google Voice-а</string>
   <string name="select_account">Одаберите уговор</string>

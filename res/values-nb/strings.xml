@@ -16,10 +16,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="enable_voice_plus">Aktivér Voice+ fra CyanogenMod</string>
-  <string name="info">Voice+ gør det muligt for alle apps at sende SMS-beskeder via Google Voice</string>
-  <string name="select_account">Vælg konto</string>
-  <string name="disable">Deaktivér</string>
+  <string name="enable_voice_plus">Aktiver Voice+ av CyanogenMod</string>
+  <string name="info">Voice+ lar alle apper sende SMS-meldinger gjennom Google Voice</string>
+  <string name="select_account">Velg konto</string>
+  <string name="disable">Deaktiver</string>
   <string name="account">Konto</string>
-  <string name="not_granted">Tilladelse utilgængelig:\n%s</string>
+  <string name="not_granted">Tillatelse ikke tilgjengelig:\n%s</string>
 </resources>
