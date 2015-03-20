@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.concurrent.ExecutionException;
@@ -156,13 +157,16 @@ public class VoicePlusService extends Service {
 
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         String country = tm.getNetworkCountryIso();
-        if (country == null)
+        if (country.isEmpty())
             country = tm.getSimCountryIso();
-        if (country == null)
+        if (country.isEmpty())
+            country = Locale.getDefault().getCountry();
+        if (country.isEmpty())
             return address.startsWith("+1"); /* Should never be reached. */
 
-        if (!country.toUpperCase().equals("US") && !address.startsWith("+1"))
+        if (!country.toUpperCase().matches("US|CA") && !address.startsWith("+1"))
             return false;
+
 
         return true;
     }
