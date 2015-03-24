@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_73f9a2c8",
+        "filename": "src/org/cyanogenmod/voiceplus/VoicePlusService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-03-24T07:22:21Z",
+      "side": 1,
+      "message": "getNetworkCountryIso() and getSimCountryIso() doesn\u0027t guaranteed to not return a null, so better change this to use TextUtils.isEmpty(), which checks for both null and 0 length. It\u0027s safe to use below",
+      "revId": "b6ce43a073f8f4e25d1a9539a83e4282c929d91d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_531d860e",
+        "filename": "src/org/cyanogenmod/voiceplus/VoicePlusService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-03-24T07:22:21Z",
+      "side": 1,
+      "message": "This opens to anyone that changes its locale to USor CA to deliver to US or CA addresses, that isn\u0027t the intention of this method though",
+      "revId": "b6ce43a073f8f4e25d1a9539a83e4282c929d91d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_f32bd231",
+        "filename": "src/org/cyanogenmod/voiceplus/VoicePlusService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-03-24T07:22:21Z",
+      "side": 1,
+      "message": "remove this extra line which isn\u0027t in the orignal source code",
+      "revId": "b6ce43a073f8f4e25d1a9539a83e4282c929d91d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
