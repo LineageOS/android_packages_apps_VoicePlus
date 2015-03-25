@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_19d68dc5",
+        "filename": "src/org/cyanogenmod/voiceplus/VoicePlusService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-03-25T10:10:28Z",
+      "side": 1,
+      "message": "As a said before don\u0027t assume that country isn\u0027t null here. getNetworkCountryIso() and getSimCountryIso() can be null here. As I previously proposed, is safer to use TextUtils.isEmpty to check this, because it checks null and 0 lenght.",
+      "revId": "dce662ffe00b23d8cbd374fcdae2671656711ac5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_79db41ee",
+        "filename": "src/org/cyanogenmod/voiceplus/VoicePlusService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-03-25T10:10:28Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "dce662ffe00b23d8cbd374fcdae2671656711ac5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
